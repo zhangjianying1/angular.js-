@@ -1,0 +1,20 @@
+<header><a href="javascript: history.go(-1)">返回</a><h1>个人信息</h1></header>
+<section>
+    <form ng-submit="subBindRealName()" name="bindMsg">
+        <div>
+            <label>真实姓名：</label>
+            <div>
+                <input type="text" ng-model="name" placeholder="注册后不能修改" required>
+            </div>
+        </div>
+        <div>
+            <label>身份证号：</label>
+            <div>
+                <input type="text" ng-model="id" placeholder="中奖提款的唯一凭证" required>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn" ng-disabled="bindMsg.$invalid">确认绑定</button>
+        </div>
+    </form>
+</section>

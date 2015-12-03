@@ -1,0 +1,18 @@
+<form name="exchangeForm" ng-submit="subFn()">
+    <div class="input-wrap">
+        <label>手机号：</label>
+        <div class="input"><input type="number" name="tele" ng-model="tele" ng-pattern="/^1[3456789][0-9]{9}$/" placeholder="请输入您的手机号" required></div>
+        <span ng-click="getCode(exchangeForm.tele.$invalid)" ng-class="{disabled: !defaults.disabled || exchangeForm.tele.$invalid}">{{ defaults.btnText }}</span>
+    </div>
+    <div class="input-wrap">
+        <label>验证码：</label>
+        <div class="input">
+            <input type="tele" ng-model="verificationCode"  ng-pattern="/[0-9]{6}/" placeholder="请输入验证码"  required>
+
+        </div>
+    </div>
+    <div class="">{{ defaults.verificationTips }}</div>
+    <div class="btn">
+        <button type="submit" ng-disabled="exchangeForm.$invalid">{{ defaults.subText }}</button>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+<header>
+    <a href="javascript: history.go(-1)">返回</a><h1>我的彩票</h1>
+</header>
+<section>
+    <div class="user-photo">
+        <img src="">
+        <em>{{ user.userName }}</em>
+        <a href="/app/views/#/prefectarchives">个人资料</a>
+    </div>
+    <div class="user-balance">
+        <ul>
+            <li><span>彩金</span><em>{{ user.drawAmount }}</em></li>
+            <li><span>奖金</span><em>{{ user.cashAmount }}</em></li>
+            <li><span>红包</span><em>{{ user.presentAmount }}</em></li>
+        </ul>
+    </div>
+    <div class="user-control">
+        <ul>
+            <li><a href="">充值</a></li>
+            <li><a href="">提现</a></li>
+            <li><a href="">奖金转彩金</a></li>
+        </ul>
+    </div>
+    <div class="user-order">
+        <dl>
+            <dt>全部订单</dt>
+            <dd>
+                <ul>
+                    <li>
+                        <div><span>05</span><em>08</em></div>
+                        <div>
+                            <h3>竞彩足球</h3>
+                            <em>代购</em>
+                        </div>
+                        <div>
+                            <em>80元</em>
+                        </div>
+                        <div>
+                            未中奖
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</section>

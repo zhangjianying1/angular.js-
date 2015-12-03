@@ -1,0 +1,10 @@
+<header>个人资料</header>
+<section class="archives">
+    <div id="bb">昵称：<em>{{ account.userName }}</em></div>
+    <p>手机号码 <span ng-show="account.mobile">已绑定</span><a ng-href="/app/views/#/bindmobile" ng-show="!account.mobile">未绑定</a></p>
+    <p>身份信息 <a ng-href="/app/views/#/realname" ng-show="account.realName">已绑定</a><a ng-href="/app/views/#/bindrealname" ng-show="!account.realName">未绑定</a></p>
+    <button ng-click="loginOut()">退出登录</button>
+    <script>
+
+    </script>
+</section>

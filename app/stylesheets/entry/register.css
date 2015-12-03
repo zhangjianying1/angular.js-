@@ -1,0 +1,53 @@
+/* line 5, ../../../sass/entry/register.scss */
+.register-cont {
+  padding: 0 .1rem;
+  font-size: .18rem;
+}
+
+/* line 9, ../../../sass/entry/register.scss */
+.base-msg {
+  margin-top: .12rem;
+}
+/* line 11, ../../../sass/entry/register.scss */
+.base-msg .model-cont-box {
+  margin-top: .1rem;
+}
+
+/* line 15, ../../../sass/entry/register.scss */
+.channel-msg {
+  margin-top: .2rem;
+}
+/* line 17, ../../../sass/entry/register.scss */
+.channel-msg .model-cont-box {
+  margin-top: .1rem;
+}
+
+/* line 21, ../../../sass/entry/register.scss */
+.register-sub {
+  margin-top: .22rem;
+}
+
+/* line 24, ../../../sass/entry/register.scss */
+.service-tele {
+  width: 100%;
+  line-height: .6rem;
+  font-size: .17rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+/* line 31, ../../../sass/entry/register.scss */
+.service-tele a {
+  color: #2f87de;
+}
+
+/* line 35, ../../../sass/entry/register.scss */
+.agree {
+  margin-top: .08rem;
+  font-size: .13rem;
+  clor: #ccc;
+}
+/* line 39, ../../../sass/entry/register.scss */
+.agree a {
+  color: #2f87de;
+}

@@ -1,0 +1,20 @@
+
+    <header>兑换明细</header>
+    <section>
+        <div dorpdownload fn="loadNew()" fn2="loadOld()" style="position:relative;z-index:2; background:#f90;">
+            <p ng-show="!show">还没有数据</p>
+            <ul ng-show="show">
+                <li>
+                    <span>时间</span>
+                    <span>说明</span>
+                    <span>兑换数量</span>
+                </li>
+                <li ng-repeat="item in items">
+                    <span>{{ item.time }}</span>
+                    <span>{{ item.dirscription }}</span>
+                    <span>{{ item.count }}</span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
