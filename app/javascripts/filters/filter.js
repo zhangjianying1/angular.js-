@@ -1,11 +1,16 @@
-angular.module('app.filter', [])
+import filterModule from './filterModule';
 /**
  * 隐藏后四位
  */
-.filter('HideLast', function(){
-        return function(input){
-            if (input) {
-                return input.replace(/[0-9\w]{4}$/, '****');
-            }
+
+class HideFilter{
+    hideLast(input){
+        if (input) {
+            return input.replace(/[0-9\w]{4}$/, '****');
         }
-    })
+    }
+    static hideFilter(){
+        return new HideFilter().hideLast;
+    }
+}
+export default filterModule.filter('hideLast', HideFilter.hideFilter);

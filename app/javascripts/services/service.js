@@ -16,21 +16,7 @@ angular.module('app.service', [])
         }
     }
 }])
-.service('LoadingService', ['$compile', '$document', '$rootScope', function($compile, $document, $rootScope){
-    var load = angular.element('<div class="loading" style="position:absolute; top:0">加载中...</div>');
 
-    return {
-        showLoading: function(){
-            $document.find('body').append(load);
-            var scope = $rootScope.$new();
-            $compile(load)(scope);
-        },
-        hideLoading: function(){
-            load.remove();
-        }
-
-    }
-}])
 .service('UserMsg', function(){
     return {
         user: {}

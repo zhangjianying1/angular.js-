@@ -1,59 +1,40 @@
-angular.module('app.hintservice', [])
-.factory('HintService', function($http, $document, $rootScope, $compile){
-
-    return {
-        hint: function(param, url){
-            $http.get(url || '../../app/views/modal/alert.html').then(function(data){
-                var hint = angular.element(data.data);
-                var mask = angular.element('<div id="mask"></div>');
-
-                if ($document.find('#alert')){
-                    $document.find('body').prepend(hint)
-                    $document.find('body').prepend(mask)
-                }
-
-                var scope = angular.extend($rootScope.$new(),
-                    param,
-                    {confirm: function(){
-                        hint.remove();
-                        mask.remove();
-                        param.hintFn()
-                    }
-                    });
-                $compile(hint)(scope)
-            })
-        }
+import angular from 'angular';
+import serviceModule from './module';
+const HTTP = new WeakMap();
+const DOCUMENT = new WeakMap();
+const ROOTSCOPE = new WeakMap();
+const COMPILE = new WeakMap();
+class HintService{
+    constructor($http, $document, $rootScope, $compile){
+        HTTP.set(this, $http);
+        DOCUMENT.set(this, $document);
+        ROOTSCOPE.set(this, $rootScope);
+        COMPILE.set(this, $compile);
     }
-})
-.factory('DialogService', function($http, $rootScope, $document, $compile){
-    var dialogMap = {};
-    return {
-        modal: function(param, data){
-            var confirm = param.confirm;
-            var html = '<div ng-controller="DialogCtrl"><p>' + confirm.tipsText + '</p><button ng-click="accept()">' + confirm.acceptText + '</button>' +
-                '<button ng-click="cancel()">' + confirm.cancelText + '</button></div>'
-            var confirm = angular.element(html);
-            var mask = angular.element('<div id="mask"></div>');
-            var newScope = $rootScope.$new();
-            angular.extend(newScope, data);
-            $document.find('body').append(confirm);
-            $document.find('body').append(mask);
-            $compile(confirm)(newScope);
-            dialogMap[param.key] = param;
-
-            dialogMap[param.key].confirm = confirm;
-            dialogMap[param.key].mask = mask;
-
-        },
-        accept: function(key, result){
-            this.dismiss(key);
-            if (dialogMap[key].accept) {
-                dialogMap[key].accept(result);
+    hint(param, url){
+        HTTP.get(this).get(url || '../../views/modal/alert.html').then((data) => {
+            let hint = angular.element(data.data);
+            let mask = angular.element('<div id="mask"></div>');
+            let doc = DOCUMENT.get(this);
+            if (doc.find('#alert')){
+                doc.find('body').prepend(hint)
+                doc.find('body').prepend(mask)
             }
-        },
-        dismiss: function(key){
-            dialogMap[key].confirm.remove();
-            dialogMap[key].mask.remove();
-        }
+
+            var scope = angular.extend(ROOTSCOPE.get(this).$new(),
+                param,
+                {confirm: function(){
+                    hint.remove();
+                    mask.remove();
+                    param.hintFn()
+                }
+                });
+            COMPILE.get(this)(hint)(scope)
+        })
     }
-})
+    static hintService($http, $document, $rootScope, $compile){
+        return new HintService($http, $document, $rootScope, $compile);
+    }
+}
+HintService.hintService.$inject = ['$http', '$document', '$rootScope',  '$compile'];
+export default serviceModule.factory('HintService', HintService.hintService);
